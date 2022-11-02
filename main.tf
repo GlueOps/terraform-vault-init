@@ -13,9 +13,6 @@ terraform {
       source  = "rickardgranberg/vaultoperator"
       version = "0.1.6"
     }
-    tfe = {
-      version = "~> 0.38.0"
-    }
   }
 }
 
@@ -26,15 +23,4 @@ provider "vaultoperator" {
 resource "vaultoperator_init" "default" {
   recovery_shares    = 5
   recovery_threshold = 3
-}
-variable "tfc_token" {
-default = "REDACTED"
-}
-provider "tfe" {
-  token = var.tfc_token
-}
-
-resource "tfe_organization" "test" {
-  name  = "my-org-name"
-  email = "venkata.mutyala+testing@glueops.dev"
 }
