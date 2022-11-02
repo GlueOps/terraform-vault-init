@@ -24,3 +24,9 @@ resource "vaultoperator_init" "default" {
   recovery_shares    = 5
   recovery_threshold = 3
 }
+
+
+resource "tfe_workspace" "test" {
+  name         = "my-workspace-name"
+  organization = "dev-aws-venkata"
+}
