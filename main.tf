@@ -28,7 +28,7 @@ resource "vaultoperator_init" "default" {
   recovery_threshold = 3
 }
 variable "tfc_token" {
-  
+default = "REDACTED"
 }
 provider "tfe" {
   token = var.tfc_token
