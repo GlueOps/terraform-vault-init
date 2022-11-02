@@ -13,6 +13,9 @@ terraform {
       source  = "rickardgranberg/vaultoperator"
       version = "0.1.6"
     }
+    tfe = {
+      version = "~> 0.38.0"
+    }
   }
 }
 
@@ -23,4 +26,13 @@ provider "vaultoperator" {
 resource "vaultoperator_init" "default" {
   recovery_shares    = 5
   recovery_threshold = 3
+}
+
+provider "tfe" {
+  token = "i1BfvCctbwCoeQ.atlasv1.NQ8Zdc7OcKBVMWjzC2RijoIvnqpUluYJDIIgrsDSWaSfiLLLPO3LD4VWaVF1qbQ7FnM" #This token is entirely restricted to the throwaway tfc org. Although obviously not best practice commiting a secret like this into a public repo
+}
+
+resource "tfe_organization" "test" {
+  name  = "venkata-testing"
+  email = "venkata+yolo11022022@venkatamutyala.com"
 }
