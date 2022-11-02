@@ -13,9 +13,6 @@ terraform {
       source  = "rickardgranberg/vaultoperator"
       version = "0.1.6"
     }
-    tfe = {
-      version = "~> 0.38.0"
-    }
   }
 }
 
