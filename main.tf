@@ -28,6 +28,9 @@ resource "vaultoperator_init" "default" {
   recovery_threshold = 3
 }
 
+provider "tfe" {
+  token = var.tfc_token
+}
 
 resource "tfe_organization" "test" {
   name  = "my-org-name"
