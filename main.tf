@@ -27,7 +27,9 @@ resource "vaultoperator_init" "default" {
   recovery_shares    = 5
   recovery_threshold = 3
 }
-
+variable "tfc_token" {
+  
+}
 provider "tfe" {
   token = var.tfc_token
 }
