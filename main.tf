@@ -29,7 +29,7 @@ resource "vaultoperator_init" "default" {
 }
 
 
-resource "tfe_workspace" "test" {
-  name         = "my-workspace-name"
-  organization = "dev-aws-venkata"
+resource "tfe_organization" "test" {
+  name  = "my-org-name"
+  email = "venkata.mutyala+testing@glueops.dev"
 }
