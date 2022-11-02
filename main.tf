@@ -32,7 +32,8 @@ provider "tfe" {
   token = "i1BfvCctbwCoeQ.atlasv1.NQ8Zdc7OcKBVMWjzC2RijoIvnqpUluYJDIIgrsDSWaSfiLLLPO3LD4VWaVF1qbQ7FnM" #This token is entirely restricted to the throwaway tfc org. Although obviously not best practice commiting a secret like this into a public repo
 }
 
-resource "tfe_organization" "test" {
-  name  = "venkata-testing"
-  email = "venkata+yolo11022022@venkatamutyala.com"
+resource "tfe_workspace" "test" {
+  name         = "my-workspace-name"
+  organization = "dev-aws-venkata"
+  tag_names    = ["test", "app"]
 }
