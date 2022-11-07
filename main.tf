@@ -31,7 +31,7 @@ resource "tfe_variable_set" "tf_core" {
   name         = "Global Varset"
   description  = "Variable set applied to all workspaces."
   global       = true
-  organization = tfe_organizations.org.names[0]
+  organization = data.tfe_organizations.org.names[0]
 }
   
   
