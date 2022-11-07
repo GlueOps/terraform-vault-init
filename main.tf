@@ -35,11 +35,20 @@ resource "tfe_variable_set" "tf_core" {
 }
   
   
-resource "tfe_variable" "test-a" {
+resource "tfe_variable" "VAULT_ADDR" {
   key             = "VAULT_ADDR"
   value           = var.VAULT_ADDR
   category        = "env"
   sensitive = false
   description     = "Vault Server Address"
+  variable_set_id = tfe_variable_set.tf_core.id
+}
+  
+ resource "tfe_variable" "VAULT_TOKEN" {
+  key             = "VAULT_TOKEN"
+  value           = vaultoperator_init.default.root_token
+  category        = "env"
+  sensitive = true
+  description     = "Vault Root Token"
   variable_set_id = tfe_variable_set.tf_core.id
 }
