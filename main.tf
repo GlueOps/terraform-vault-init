@@ -2,7 +2,7 @@ module "rerun" {
   source = "git::https://github.com/GlueOps/terraform-toggle-rerun-for-tfc-operator.git?ref=v0.1.0"
 }
 
-variable "VAULT_ADDR" {
+variable "VAULT_ADDR_FOR_INITIALIZATION" {
   type        = string
   description = "The url of the vault server Example: https://vault.us-production.glueops.rocks"
 }
@@ -17,7 +17,7 @@ terraform {
 }
 
 provider "vaultoperator" {
-  vault_addr = var.VAULT_ADDR
+  vault_addr = var.VAULT_ADDR_FOR_INITIALIZATION
 }
 
 resource "vaultoperator_init" "default" {
@@ -37,7 +37,7 @@ resource "tfe_variable_set" "tf_core" {
   
 resource "tfe_variable" "VAULT_ADDR" {
   key             = "VAULT_ADDR"
-  value           = var.VAULT_ADDR
+  value           = var.VAULT_ADDR_FOR_INITIALIZATION
   category        = "env"
   sensitive = false
   description     = "Vault Server Address"
