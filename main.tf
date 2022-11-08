@@ -10,12 +10,23 @@ terraform {
     }
   }
 }
+  
+  
+resource "time_sleep" "wait" {
+  depends_on = [time_sleep.wait]
+
+  create_duration = "360s"
+}
 
 provider "vaultoperator" {}
 
 resource "vaultoperator_init" "default" {
   recovery_shares    = 5
   recovery_threshold = 3
+
+  depends_on = [
+    time_sleep.wait
+  ]
 }
   
   data "tfe_organizations" "org" {}
